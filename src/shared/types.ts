@@ -4,7 +4,7 @@ export interface UserData {
     fullName: string;
     email: string;
     role: UserRole;
-    coursesEnrolled: string[];
+    coursesEnrolled: string[] | null;
 }
 
 export enum UserRole {
