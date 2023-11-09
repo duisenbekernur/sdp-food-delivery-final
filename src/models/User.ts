@@ -1,27 +1,13 @@
-import Student from "./Student";
+import { Restaurant } from "./Restaurant";
+import { BasicPricingStrategy, Order } from "./Order";
+import { FoodItem } from "./FoodItem";
 
-class User {
-  static id: number = 0;
-  public username: string;
-  public fullName: string;
-  public email: string;
-  public role: string;
-  public coursesEnrolled: string[] | null;
+export class User {
+  constructor(public name: string) {}
 
-  constructor(username: string, fullName: string, email: string, role: string, coursesEnrolled: string[] | null) {
-    User.id++;
-    console.log("================ id", User.id);
-    this.username = username;
-    this.fullName = fullName;
-    this.email = email;
-    this.role = role;
-    this.coursesEnrolled = coursesEnrolled;
+  placeOrder(restaurant: Restaurant, items: FoodItem[]) {
+    const order = new Order(restaurant, new BasicPricingStrategy());
+    items.forEach((item) => order.addItem(item));
+    order.showOrderSummary();
   }
-
-  public getStatus(): string {
-    return "This is a user";
-  }
-
 }
-
-export default User;

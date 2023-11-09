@@ -1,44 +1,20 @@
-import TeacherAuthentication from "./src/Authentication/TeacherAuthentication";
-import StudentAuthentication from "./src/Authentication/StudentAuthentication";
-import UserManager from "./src/models/UserManager";
+import { Restaurant } from "./src/models/Restaurant";
+import { FoodItem } from "./src/models/FoodItem";
+import { User } from "./src/models/User";
 
-const teacherExample = new TeacherAuthentication();
-const studentExample = new StudentAuthentication();
+console.log("Welcome to the Online Food Delivery System!");
 
-const userManager = UserManager.getInstance();
-const userManagerClone = UserManager.getInstance();
+const restaurant = Restaurant.createInstance("Restaurant A");
+const user = new User("Yernur");
 
-userManager.setStrategy(teacherExample);
-// const isAuthenticatedTeacher = userManager.authenticateUser(
-//   "teacher",
-//   "teacherPassword"
-// );
-const teacher = userManager.registerUser(
-  "best_teacher",
-  "Olga Petrovna",
-  "u4ilka_petrovna@gmail.com",
-  "teacher",
-  null
-);
+const menuA = restaurant.getMenu();
 
-console.log("from index.ts: ", teacher);
+console.log("Restaurant's Menu:");
+menuA.forEach((item) => {
+  console.log(`${item.name} - $${item.price}`);
+});
 
-console.log();
-console.log("================================================================");
-console.log();
+const orderItems: FoodItem[] = [menuA[0], menuA[2]];
 
-userManager.setStrategy(studentExample);
-const student = userManager.registerUser(
-  "best_student",
-  "Duysenbek Yernur",
-  "yernurdyn_po4tasy@gmail.com",
-  "student",
-  ["software design patterns"]
-);
-
-console.log("from index.ts: ", teacher);
-
-// console.log("isAuthenticatedTeacher", isAuthenticatedTeacher);
-// console.log("isAuthenticatedStudent", isAuthenticatedStudent);
-
-// console.log("Singleton: ", userManager === userManagerClone);
+console.log(`User ${user.name} is placing an order:`);
+user.placeOrder(restaurant, orderItems);
