@@ -1,6 +1,6 @@
 import { FoodItem } from "./FoodItem";
 import { Restaurant } from "./Restaurant";
-
+import { OrderObserver } from "./Observer";
 export interface PricingStrategy {
   calculateTotal(items: FoodItem[]): number;
 }
@@ -42,5 +42,6 @@ export class Order {
       console.log(`${item.name} - $${item.price}`);
     });
     console.log(`Total: $${this.calculateTotal()}`);
+    
   }
 }
