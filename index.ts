@@ -6,7 +6,8 @@ import { Order } from "./src/models/Observer";
 console.log("Welcome to the Online Food Delivery System!");
 
 const restaurant = Restaurant.createInstance("Restaurant A");
-const user = new User("Yernur");
+const user = new User("Yernur", 'example@gmail.com');
+
 
 const menuA = restaurant.getMenu();
 

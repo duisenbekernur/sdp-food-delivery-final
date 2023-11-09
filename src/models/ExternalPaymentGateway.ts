@@ -40,22 +40,3 @@ class PaymentAdapter implements PaymentSystem {
     }
 }
 
-// Использование адаптера в food delivery
-class FoodDelivery {
-    private paymentAdapter: PaymentAdapter;
-
-    constructor(paymentSystem: PaymentSystem) {
-        this.paymentAdapter = new PaymentAdapter(paymentSystem);
-    }
-
-    makePayment(amount: number) {
-        this.paymentAdapter.processPayment(amount);
-    }
-}
-
-// Пример использования
-const stripePayment = new StripePayment();
-const foodDelivery = new FoodDelivery(stripePayment);
-
-// Вызов метода для осуществления платежа
-foodDelivery.makePayment(50);
