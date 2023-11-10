@@ -1,5 +1,9 @@
 import { Order, OrderObserver } from "./Order";
 
+interface IUserFactory {
+  createUser(name: string, email: string, isPrime: boolean): User;
+}
+
 export class User implements OrderObserver {
   private email: string;
   private isPremium: boolean;
@@ -36,7 +40,7 @@ export class User implements OrderObserver {
   }
 }
 
-export class UserFactory {
+export class UserFactory implements IUserFactory {
   constructor() {}
 
   public createUser(
