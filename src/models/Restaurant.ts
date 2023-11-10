@@ -1,4 +1,4 @@
-import { FoodItem } from "./FoodItem";
+import { BasicFoodItem } from "./FoodItem";
 
 export class Restaurant {
   private static instance: Restaurant | null = null;
@@ -14,9 +14,9 @@ export class Restaurant {
 
   getMenu() {
     return [
-      new FoodItem("Burger", 5),
-      new FoodItem("Pizza", 8),
-      new FoodItem("Salad", 3),
+      new BasicFoodItem("Burger", 1000),
+      new BasicFoodItem("Pizza", 2000),
+      new BasicFoodItem("Salad", 1500),
     ];
   }
 }

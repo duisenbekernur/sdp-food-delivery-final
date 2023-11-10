@@ -1,42 +1,38 @@
 // Интерфейс платежной системы
-interface PaymentSystem {
-    processPayment(amount: number): void;
+export interface PaymentSystem {
+  processPayment(amount: number): void;
 }
 
 // Реализация платежной системы Stripe
-class StripePayment implements PaymentSystem {
-    processPayment(amount: number) {
-        console.log(`Проведение платежа через Stripe на сумму ${amount}...`);
+export class StripePayment implements PaymentSystem {
+  processPayment(amount: number) {
+    console.log(`Проведение платежа через Stripe на сумму ${amount}...`);
 
-        console.log(`Платеж на сумму ${amount} обработан успешно через Stripe`);
-    }
+    console.log(`Платеж на сумму ${amount} обработан успешно через Stripe`);
+  }
 }
 
 // Логика обработки платежа через PayPal
-class PaypalPayment implements PaymentSystem {
-    processPayment(amount: number) {
-        console.log(`Проведение платежа через PayPal на сумму ${amount}...`);
+export class PaypalPayment implements PaymentSystem {
+  processPayment(amount: number) {
+    console.log(`Проведение платежа через PayPal на сумму ${amount}...`);
 
-        console.log(`Платеж на сумму ${amount} обработан успешно через PayPal`);
-    }
+    console.log(`Платеж на сумму ${amount} обработан успешно через PayPal`);
+  }
 }
-
 
 // Адаптер для платежей
-class PaymentAdapter implements PaymentSystem {
-    private paymentSystem: PaymentSystem;
+export class PaymentAdapter implements PaymentSystem {
+  private paymentSystem: PaymentSystem | null = null;
 
-    constructor(paymentSystem: PaymentSystem) {
-        this.paymentSystem = paymentSystem;
-    }
+  constructor(paymentSystem: PaymentSystem) {
+    this.paymentSystem = paymentSystem;
+  }
 
-    processPayment(amount: number) {
-        console.log(`Начало обработки платежа: сумма ${amount}`);
-        
-        // Здесь происходит преобразование вызова интерфейса food delivery к специфичному вызову платежной системы
-        this.paymentSystem.processPayment(amount);
+  processPayment(amount: number) {
+    console.log(`Начало обработки платежа: сумма ${amount}`);
 
-        console.log(`Платеж на сумму ${amount} обработан успешно`);
-    }
+    // Здесь происходит преобразование вызова интерфейса food delivery к специфичному вызову платежной системы
+    this.paymentSystem?.processPayment(amount);
+  }
 }
-
