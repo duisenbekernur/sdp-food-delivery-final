@@ -18,3 +18,7 @@ The project is organized into modules representing key components:
 ```sh
 npm install -g  ts-node
 ```
+
+```sh
+ts-node ./index.ts
+```
