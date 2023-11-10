@@ -12,3 +12,13 @@ The project is organized into modules representing key components:
 - **models/User.ts**: Defines the `User` class that can be created via `UserFactory`.
 - **models/Order.ts**: Manages orders, pricing strategies, and demonstrates the Strategy Pattern. +
 - **models/ExternalPaymentGateway.ts**: Demonstrates the Adapter Pattern with a simplified external payment interface and implementation.
+
+## Project Setup
+
+```sh
+npm install -g  ts-node
+```
+
+```sh
+ts-node ./index.ts
+```
