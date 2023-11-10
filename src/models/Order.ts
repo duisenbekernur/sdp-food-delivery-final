@@ -4,7 +4,7 @@ export interface PricingStrategy {
   calculateTotal(items: FoodComponent[]): number;
 }
 export interface OrderObserver {
-  update(order: Order): void;
+  update(): void;
 }
 
 export class BasicPricingStrategy implements PricingStrategy {
@@ -16,7 +16,7 @@ export class BasicPricingStrategy implements PricingStrategy {
 export class DiscountPricingStrategy implements PricingStrategy {
   calculateTotal(items: FoodComponent[]): number {
     const total = items.reduce((total, item) => total + item.price, 0);
-    return total * 0.9; // 10% discount
+    return total * 0.9; //
   }
 }
 
@@ -54,19 +54,15 @@ export class Order {
     console.log(`Total: $${this.calculateTotal()}`);
   }
 
-  // Метод, который вызывается при прибытии вашего заказа
-  // в назначенное место (в данном случае, пока просто фиктивный пример)
   orderDelivered() {
       this.delivered = true;
-      this.notifyObservers(); // Уведомление наблюдателей о доставке
+      this.notifyObservers();
   }
-
-  // Метод, позволяющий уведомить всех наблюдателей о доставке заказа
 
   notifyObservers() {
     if (this.delivered) {
       this.observers.forEach((observer) => {
-        observer.update(this);
+        observer.update();
       });
     }
   }

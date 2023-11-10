@@ -89,11 +89,11 @@ async function processUserInput(userInput: string) {
   order.setStrategy(new BasicPricingStrategy());
   order.showOrderSummary();
 
-  const hasPromocode = await askQuestion(
+  const promocode = await askQuestion(
     "\nWrite promocode if you have,  or 0 to skip: ",
   );
 
-  if (hasPromocode === "accepted") {
+  if (promocode === "accepted") {
     order.setStrategy(new DiscountPricingStrategy());
     console.log(
       "You are used a promocode for discount 10%! Total price now is " +
@@ -102,7 +102,7 @@ async function processUserInput(userInput: string) {
   }
 
   const paymentType = await askQuestion(
-    "\nHow you will pay? We provide this types of payment: \n1. Stripe\n2. Paypal\n\n Write the id of the payment type",
+    "\nHow you will pay? We provide this types of payment: \n1. Stripe\n2. Paypal\n\n Write the id of the payment type: ",
   );
 
   let payment: PaymentSystem | null = null;

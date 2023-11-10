@@ -1,9 +1,7 @@
-// Интерфейс платежной системы
 export interface PaymentSystem {
   processPayment(amount: number): void;
 }
 
-// Реализация платежной системы Stripe
 export class StripePayment implements PaymentSystem {
   processPayment(amount: number) {
     console.log(`Проведение платежа через Stripe на сумму ${amount}...`);
@@ -12,7 +10,6 @@ export class StripePayment implements PaymentSystem {
   }
 }
 
-// Логика обработки платежа через PayPal
 export class PaypalPayment implements PaymentSystem {
   processPayment(amount: number) {
     console.log(`Проведение платежа через PayPal на сумму ${amount}...`);
@@ -21,7 +18,6 @@ export class PaypalPayment implements PaymentSystem {
   }
 }
 
-// Адаптер для платежей
 export class PaymentAdapter implements PaymentSystem {
   private paymentSystem: PaymentSystem | null = null;
 
@@ -32,7 +28,6 @@ export class PaymentAdapter implements PaymentSystem {
   processPayment(amount: number) {
     console.log(`Начало обработки платежа: сумма ${amount}`);
 
-    // Здесь происходит преобразование вызова интерфейса food delivery к специфичному вызову платежной системы
     this.paymentSystem?.processPayment(amount);
   }
 }

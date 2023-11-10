@@ -31,7 +31,7 @@ export class User implements OrderObserver {
     }
   }
 
-  update(order: Order): void {
+  update(): void {
     console.log("\nУведомление: Ваш заказ прибыл в назначенное место!");
   }
 }
